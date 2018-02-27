@@ -9,19 +9,30 @@
         <h3 class="text-center">angularJs todoList案例</h3>
         <form role="form" ng-submit="add()">
             <input type="text" class="form-control" name="text" ng-model="text" placeholder="请输入您需要添加的信息" />
-            <!--<button type="button" class="btn btn-primary" ng-click="add()">添加</button>-->
         </form>
-        <hr class="featurette-divider">
+        <!--<hr class="featurette-divider">-->
 
-        <div>
             <table class="table">
-                <tr>
-                    <td ng-repeat="todo in todoList">
-                        {{ todo.text }}
-                    </td>
+                <tr ng-repeat="(index,todo) in todoList" class="row">
+                    <td ng-click="done(index)" class="col-xs-1"><input type="checkbox" /></td>
+                    <td class="col-xs-1">{{$index+1}}</td>
+                    <td class="col-xs-8">{{todo.text}}</td>
+                    <td ng-click="delete(index)" class="col-xs-2 glyphicon glyphicon-remove"></td>
                 </tr>
             </table>
-        </div>
+
+        <hr ng-show="todoList1.length>0" class="featurette-divider">
+        <p ng-show="todoList1.length>0">---------已完成------------</p>
+        <table class="table">
+            <tr ng-repeat="(index,todo) in todoList1" class="row">
+                <td ng-click="undone(index)" class="col-xs-1"><input type="checkbox" /></td>
+                <td class="col-xs-1">{{$index+1}}</td>
+                <td class="col-xs-8">{{todo.text}}</td>
+                <td ng-click="delete(index)" class="col-xs-2 glyphicon glyphicon-remove"></td>
+            </tr>
+        </table>
+
+        <p>已完成{{todoList1.length}}个</p>
     </div>
 </body>
 </html>
