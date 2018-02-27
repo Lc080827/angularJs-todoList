@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+</head>
+<body>
+    <div class="container">
+        <h3 class="text-center">angularJs todoList案例</h3>
+        <form role="form" ng-submit="add()">
+            <input type="text" class="form-control" name="text" ng-model="text" placeholder="请输入您需要添加的信息" />
+            <!--<button type="button" class="btn btn-primary" ng-click="add()">添加</button>-->
+        </form>
+        <hr class="featurette-divider">
+
+        <div>
+            <table class="table">
+                <tr>
+                    <td ng-repeat="todo in todoList">
+                        {{ todo.text }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
